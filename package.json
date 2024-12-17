@@ -1,0 +1,19 @@
+{
+  "name": "clockapp",
+  "version": "1.0.0",
+  "description": "A simple clock app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Silas Lundquist",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^6.0.0",
+    "sass": "^1.83.0"
+  }
+}
