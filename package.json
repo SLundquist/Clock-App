@@ -1,5 +1,5 @@
 {
-  "name": "clockapp",
+  "name": "Clock App",
   "version": "1.0.0",
   "description": "A simple clock app.",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Silas Lundquist",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^3.0.3",
     "gulp": "^5.0.0",

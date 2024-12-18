@@ -6,6 +6,7 @@
   font-size: 10px;
   transition: all 0.5s cubic-bezier(0, 0.84, 0.23, 1);
   color: white;
+  cursor: default;
 }
 
 body {
@@ -16,6 +17,24 @@ body {
 
 ::selection {
   background: transparent;
+}
+
+:fullscreen {
+  #buttons {
+    width: 3rem;
+  }
+
+  #lightDarkButton {
+    display: none;
+  }
+
+  #settingsButton {
+    display: none;
+  }
+
+  #nextThemeButton {
+    display: none;
+  }
 }
 
 #rim {
@@ -45,9 +64,19 @@ body {
   flex-flow: row nowrap;
   gap: 2rem;
   height: 3rem;
-  width: 13rem;
+  width: 18rem;
   justify-content: center;
   align-items: center;
+}
+
+#fullscreenButton {
+  mask: url(../icons/fullscreenEnter.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+
+  &:hover {
+    transform: rotateZ(-90deg);
+  }
 }
 
 #settingsButton {
@@ -93,7 +122,6 @@ body {
   box-shadow: 0rem 0rem 2rem #ffffff;
 
   &:hover {
-    cursor: pointer;
     transform: scale(1.05);
   }
 }
@@ -115,13 +143,13 @@ body {
       transparent,
       transparent
     ),
-    linear-gradient(to top right, #c4184c, transparent),
+    linear-gradient(to top right, #aa224b, transparent),
     linear-gradient(to bottom right, #f9c107, transparent);
 }
 
 .backgroundLightTheme3 {
-  background: linear-gradient(to left, rgb(166, 70, 255), transparent),
-    linear-gradient(to left, transparent, rgb(28, 228, 242)), green;
+  background: linear-gradient(to left, rgb(130, 56, 199), transparent),
+    linear-gradient(to left, transparent, rgb(177, 43, 137)), green;
 }
 
 .backgroundLightTheme4 {
@@ -140,7 +168,7 @@ body {
 }
 
 .backgroundDarkTheme3 {
-  background: black;
+  background: radial-gradient(50% 50%, black, #000001);
 }
 
 .backgroundDarkTheme4 {
@@ -181,8 +209,15 @@ body {
   font-family: 'Jost', sans-serif;
   font-weight: 900;
   letter-spacing: 6rem;
-  text-shadow: 0.5rem 0.5rem #ffffff60, 1rem 1rem #ffffff60,
-    1.5rem 1.5rem #ffffff60;
+  text-shadow: 0 0 20rem #00000050, 0.5rem 0.5rem #ffffff90, 1rem 1rem #ffffff70,
+    1.5rem 1.5rem #ffffff50, 2rem 2rem #ffffff30, 2.5rem 2.5rem #ffffff10;
+}
+
+.textTheme7 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 7rem;
 }
 
 .settingsBar {
@@ -240,7 +275,13 @@ body {
   flex-flow: row nowrap;
 
   &:hover {
-    cursor: pointer;
+    .toggleNobOff {
+      box-shadow: 0 0 1rem white;
+    }
+
+    .toggleNobOn {
+      box-shadow: 0 0 1rem white;
+    }
   }
 }
 
@@ -269,8 +310,12 @@ body {
 
 #secondsText {
   font-size: 4.2rem;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
 }
 
 #formatText {
   font-size: 4.2rem;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
 }

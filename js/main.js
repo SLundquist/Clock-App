@@ -38,7 +38,9 @@ function currentTime() {
       composite = `${hours}:${minutes}`;
     }
   } else {
-    return 0;
+    throw new Error(
+      'Time composite error: Variable "timeFormat" is using an invalid value',
+    );
   }
   if (useSeconds == 'off') {
     return composite;
@@ -46,11 +48,13 @@ function currentTime() {
     composite = `${composite}:${seconds}`;
     return composite;
   } else {
-    return 0;
+    throw new Error(
+      'Time composite error: Variable "useSeconds" is using an invalid value',
+    );
   }
 }
 
-// Function that updates the time
+// Function that updates the time text and site title
 const timeText = document.getElementById('timeText');
 const title = document.getElementById('title');
 function updateTime() {
@@ -60,6 +64,34 @@ function updateTime() {
 
 // Updates the time every half second (500ms)
 var clockInterval = setInterval(updateTime, 500);
+
+// Fullscreen Button
+const fullscreenButton = document.getElementById('fullscreenButton');
+var isInFullscreen = false;
+const screen = document.documentElement;
+if (document.fullscreenEnabled == false) {
+  fullscreenButton.style.mask = '';
+  fullscreenButton.style.pointerEvents = 'none';
+}
+function check() {
+  if (window.screenTop && window.screenY) {
+    isInFullscreen = false;
+  } else {
+    isInFullscreen = true;
+  }
+}
+fullscreenButton.addEventListener('click', () => {
+  check();
+  if (isInFullscreen == true) {
+    document.exitFullscreen();
+    isInFullscreen = false;
+  } else if (isInFullscreen == false) {
+    screen.requestFullscreen();
+    isInFullscreen = true;
+  } else {
+    throw new Error('Fullscreen Error: Variable is not a boolean');
+  }
+});
 
 // Settings Button
 const settingsButton = document.getElementById('settingsButton');
@@ -118,12 +150,12 @@ function updateTheme() {
     'textTheme4',
     'textTheme5',
     'textTheme6',
+    'textTheme7',
   ];
 
   var isLight = theme === 'light';
   var themes = isLight ? lightThemes : darkThemes;
-  var textTheme = textThemes[Math.floor(textNum / 1.666666666)];
-
+  var textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
   var backgroundTheme = themes[Math.floor(themeNum / 2.5)];
 
   if (backgroundTheme && textTheme) {
@@ -132,7 +164,7 @@ function updateTheme() {
     secondsText.className = textTheme;
     timeText.className = textTheme;
   } else {
-    console.log('failed');
+    throw new Error('Updating theme failed');
   }
 }
 nextThemeButton.addEventListener('click', updateTheme);
@@ -143,7 +175,6 @@ const lightDarkButton = document.getElementById('lightDarkButton');
 lightDarkButton.addEventListener('click', () => {
   theme = theme === 'light' ? 'dark' : 'light';
   updateTheme();
-  console.log('updated');
 });
 
 // Seconds Setting
@@ -160,3 +191,9 @@ secondsToggle.addEventListener('click', () => {
     secondsToggleNob.classList.remove('toggleNobOff');
   }
 });
+
+// Error Logging
+try {
+} catch (e) {
+  console.error(e);
+}
