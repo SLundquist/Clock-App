@@ -127,10 +127,6 @@ const nextThemeButton = document.getElementById('nextThemeButton');
 const background = document.getElementById('background');
 const formatText = document.getElementById('formatText');
 const secondsText = document.getElementById('secondsText');
-
-function updateTheme() {
-  const textNum = Math.floor(Math.random() * 10);
-  const themeNum = Math.floor(Math.random() * 10);
   const lightThemes = [
     'backgroundLightTheme1',
     'backgroundLightTheme2',
@@ -153,6 +149,9 @@ function updateTheme() {
     'textTheme7',
   ];
 
+function updateTheme() {
+  const textNum = Math.floor(Math.random() * 10);
+  const themeNum = Math.floor(Math.random() * 10);
   var isLight = theme === 'light';
   var themes = isLight ? lightThemes : darkThemes;
   var textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
