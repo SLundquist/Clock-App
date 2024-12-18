@@ -127,27 +127,27 @@ const nextThemeButton = document.getElementById('nextThemeButton');
 const background = document.getElementById('background');
 const formatText = document.getElementById('formatText');
 const secondsText = document.getElementById('secondsText');
-  const lightThemes = [
-    'backgroundLightTheme1',
-    'backgroundLightTheme2',
-    'backgroundLightTheme3',
-    'backgroundLightTheme4',
-  ];
-  const darkThemes = [
-    'backgroundDarkTheme1',
-    'backgroundDarkTheme2',
-    'backgroundDarkTheme3',
-    'backgroundDarkTheme4',
-  ];
-  const textThemes = [
-    'textTheme1',
-    'textTheme2',
-    'textTheme3',
-    'textTheme4',
-    'textTheme5',
-    'textTheme6',
-    'textTheme7',
-  ];
+const lightThemes = [
+  'backgroundLightTheme1',
+  'backgroundLightTheme2',
+  'backgroundLightTheme3',
+  'backgroundLightTheme4',
+];
+const darkThemes = [
+  'backgroundDarkTheme1',
+  'backgroundDarkTheme2',
+  'backgroundDarkTheme3',
+  'backgroundDarkTheme4',
+];
+const textThemes = [
+  'textTheme1',
+  'textTheme2',
+  'textTheme3',
+  'textTheme4',
+  'textTheme5',
+  'textTheme6',
+  'textTheme7',
+];
 
 function updateTheme() {
   const textNum = Math.floor(Math.random() * 10);
