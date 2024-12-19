@@ -70,13 +70,21 @@ body {
 }
 
 #fullscreenButton {
-  mask: url(../icons/fullscreenEnter.svg);
-  mask-size: cover;
-  mask-repeat: no-repeat;
-
   &:hover {
     transform: rotateZ(-90deg);
   }
+}
+
+.fullscreenOn {
+  mask: url(../icons/fullscreenExit.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+}
+
+.fullscreenOff {
+  mask: url(../icons/fullscreenEnter.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
 }
 
 #settingsButton {
@@ -90,13 +98,21 @@ body {
 }
 
 #lightDarkButton {
-  mask: url(../icons/moon.svg);
-  mask-size: cover;
-  mask-repeat: no-repeat;
-
   &:hover {
     transform: rotateZ(360deg);
   }
+}
+
+.lightButton {
+  mask: url(../icons/sun.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+}
+
+.darkButton {
+  mask: url(../icons/moon.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
 }
 
 #nextThemeButton {
@@ -122,7 +138,7 @@ body {
   box-shadow: 0rem 0rem 2rem #ffffff;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 }
 

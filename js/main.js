@@ -1,4 +1,4 @@
-// setting vars
+// Initial Settings
 var theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches
   ? 'dark'
   : 'light';
@@ -75,9 +75,24 @@ if (document.fullscreenEnabled == false) {
 }
 function check() {
   if (window.screenTop && window.screenY) {
-    isInFullscreen = false;
+    isInFullscreen = false; // Returned when not in fullscreen
+    console.log('false');
   } else {
-    isInFullscreen = true;
+    isInFullscreen = true; // Returned when in fullscreen
+    console.log('true');
+  }
+}
+const fullscreenChecker = setInterval(check, 500);
+document.addEventListener('keydown', event => {
+  if (event.key == 'Escape' && isInFullscreen == true) {
+    updateFullscreenIcon();
+  }
+});
+function updateFullscreenIcon() {
+  if (fullscreenButton.classList.contains('fullscreenOff')) {
+    fullscreenButton.classList.replace('fullscreenOff', 'fullscreenOn');
+  } else if (fullscreenButton.classList.contains('fullscreenOn')) {
+    fullscreenButton.classList.replace('fullscreenOn', 'fullscreenOff');
   }
 }
 fullscreenButton.addEventListener('click', () => {
@@ -85,9 +100,11 @@ fullscreenButton.addEventListener('click', () => {
   if (isInFullscreen == true) {
     document.exitFullscreen();
     isInFullscreen = false;
+    updateFullscreenIcon();
   } else if (isInFullscreen == false) {
     screen.requestFullscreen();
     isInFullscreen = true;
+    updateFullscreenIcon();
   } else {
     throw new Error('Fullscreen Error: Variable is not a boolean');
   }
@@ -169,11 +186,25 @@ function updateTheme() {
 nextThemeButton.addEventListener('click', updateTheme);
 
 // Theme Button
-updateTheme();
 const lightDarkButton = document.getElementById('lightDarkButton');
+updateTheme();
+if (theme == 'light') {
+  lightDarkButton.classList.add('darkButton');
+} else if (theme == 'dark') {
+  lightDarkButton.classList.add('lightButton');
+}
 lightDarkButton.addEventListener('click', () => {
   theme = theme === 'light' ? 'dark' : 'light';
   updateTheme();
+  if (lightDarkButton.classList.contains('lightButton')) {
+    lightDarkButton.classList.replace('lightButton', 'darkButton');
+  } else if (lightDarkButton.classList.contains('darkButton')) {
+    lightDarkButton.classList.replace('darkButton', 'lightButton');
+  } else {
+    throw new Error(
+      'Class list error: HTML element does not contain expected class',
+    );
+  }
 });
 
 // Seconds Setting

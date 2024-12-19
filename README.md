@@ -1,2 +1,2 @@
 # Clock-App
-An asthetic clock app.
+An aesthetic clock app by Silas Lundquist.
