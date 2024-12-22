@@ -35,6 +35,10 @@ body {
   #nextThemeButton {
     display: none;
   }
+
+  #fullscreenButton {
+    opacity: 0.5;
+  }
 }
 
 #rim {
@@ -147,25 +151,25 @@ body {
 }
 
 .backgroundLightTheme1 {
-  background: linear-gradient(to top left, rgb(231, 64, 64) 0%, #00000000 100%),
-    linear-gradient(to top right, #2cbcff, transparent),
-    linear-gradient(to bottom left, #85ff55, transparent);
+  background: linear-gradient(-45deg, rgb(231, 64, 64) 0%, #0000 100%),
+    linear-gradient(45deg, #2cbcff, transparent),
+    linear-gradient(220deg, #85ff55, transparent);
 }
 
 .backgroundLightTheme2 {
   background: linear-gradient(
-      to top left,
+      270deg,
       rgb(231, 159, 64),
       transparent,
       transparent
     ),
-    linear-gradient(to top right, #aa224b, transparent),
-    linear-gradient(to bottom right, #f9c107, transparent);
+    linear-gradient(45deg, #aa224b, transparent),
+    linear-gradient(135deg, #f9c107, transparent);
 }
 
 .backgroundLightTheme3 {
-  background: linear-gradient(to left, rgb(130, 56, 199), transparent),
-    linear-gradient(to left, transparent, rgb(177, 43, 137)), green;
+  background: linear-gradient(-90deg, rgb(130, 56, 199), transparent),
+    linear-gradient(-90deg, transparent, rgb(177, 43, 137)), green;
 }
 
 .backgroundLightTheme4 {
@@ -174,7 +178,7 @@ body {
 }
 
 .backgroundDarkTheme1 {
-  background: radial-gradient(50% 50%, #3a3a3a, #0f0f0f);
+  background: radial-gradient(circle at 50% 50%, #3a3a3a, #0f0f0f);
 }
 
 .backgroundDarkTheme2 {
@@ -184,11 +188,11 @@ body {
 }
 
 .backgroundDarkTheme3 {
-  background: radial-gradient(50% 50%, black, #000001);
+  background: radial-gradient(circle at 50% 50%, black, #000001);
 }
 
 .backgroundDarkTheme4 {
-  background: radial-gradient(50% 50%, rgb(32, 35, 37), rgb(14, 14, 16));
+  background: radial-gradient(circle at 50% 50%, rgb(32, 35, 37), rgb(14, 14, 16));
 }
 
 .textTheme1 {

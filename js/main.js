@@ -1,22 +1,22 @@
 // Initial Settings
-var theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches
-  ? 'dark'
-  : 'light';
-var timeFormat = '24h';
-var useSeconds = 'off';
+let theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?
+  'dark' : // Dark/Light returned depending on the user's system preferences
+  'light';
+let timeFormat = '24h'; // Initial time format set to 24h
+let useSeconds = 'off'; // Initially do not use seconds for cleaner first experience
 
-// Creates time string based on settings
 function currentTime() {
-  let now = new Date();
-  let hours = now.getHours();
-  let hoursDigits = hours.toString().length;
-  let minutes = now.getMinutes();
-  let minutesDigits = minutes.toString().length;
-  let seconds = now.getSeconds();
-  let secondsDigits = seconds.toString().length;
-  let composite;
-  if (hoursDigits == 1) {
-    hours = `0${hours}`;
+  // Creates time string based on settings
+  const now = new Date();
+  let hours = now.getHours(); // Returns current hours
+  const hoursDigits = hours.toString().length; // Returns # of digits of hours var
+  let minutes = now.getMinutes(); // Returns current minutes
+  const minutesDigits = minutes.toString().length; // Returns # of digits of minutes var
+  let seconds = now.getSeconds(); // Returns current seconds
+  const secondsDigits = seconds.toString().length; // Returns # of digits of seconds var
+  let composite; // will contain final composite of hours, minutes, and seconds depending on user preference
+  if (hoursDigits == 1) { // ---------------------------------------------------
+    hours = `0${hours}`; //            Adds preceding 0 if only 1 digit
   } else {
   }
   if (minutesDigits == 1) {
@@ -26,76 +26,71 @@ function currentTime() {
   if (secondsDigits == 1) {
     seconds = `0${seconds}`;
   } else {
-  }
-  if (timeFormat == '24h') {
+  } // -------------------------------------------------------------------------
+  if (timeFormat == '24h') { //        Compiles either 24 or 12 hour format
     composite = `${hours}:${minutes}`;
   } else if (timeFormat == '12h') {
     if (hours <= 12) {
       composite = `${hours}:${minutes}`;
     } else {
-      parseInt(hours);
+      parseInt(hours); // Makes hours an integer to enable subtracting
       hours -= 12;
       composite = `${hours}:${minutes}`;
     }
   } else {
-    throw new Error(
-      'Time composite error: Variable "timeFormat" is using an invalid value',
+    throw new Error( // Thrown when 'timeFormat' is not either '24h' or '12h'
+        'Time composite error: Variable "timeFormat" is using an invalid value',
     );
-  }
-  if (useSeconds == 'off') {
+  } // -------------------------------------------------------------------------
+  if (useSeconds == 'off') { //        Adds seconds as needed
     return composite;
   } else if (useSeconds == 'on') {
     composite = `${composite}:${seconds}`;
     return composite;
   } else {
-    throw new Error(
-      'Time composite error: Variable "useSeconds" is using an invalid value',
+    throw new Error( // Thrown when 'useSeconds' is not either 'on' or 'off'
+        'Time composite error: Variable "useSeconds" is using an invalid value',
     );
   }
-}
-
-// Function that updates the time text and site title
+} // ---------------------------------------------------------------------------
+//                                     Function that updates the time text and site title
 const timeText = document.getElementById('timeText');
 const title = document.getElementById('title');
 function updateTime() {
   timeText.innerHTML = currentTime();
   title.innerHTML = `Clock App - ${currentTime()}`;
 }
-
-// Updates the time every half second (500ms)
-var clockInterval = setInterval(updateTime, 500);
-
-// Fullscreen Button
+setInterval(updateTime, 500); // Updates the time every half second (500ms)
+// -----------------------------------------------------------------------------
+//                                     Fullscreen Button and Function
 const fullscreenButton = document.getElementById('fullscreenButton');
-var isInFullscreen = false;
+let isInFullscreen = false;
 const screen = document.documentElement;
-if (document.fullscreenEnabled == false) {
+if (document.fullscreenEnabled == false) { // Remove fullscreen button if browser does not support the function
   fullscreenButton.style.mask = '';
   fullscreenButton.style.pointerEvents = 'none';
 }
 function check() {
   if (window.screenTop && window.screenY) {
     isInFullscreen = false; // Returned when not in fullscreen
-    console.log('false');
   } else {
     isInFullscreen = true; // Returned when in fullscreen
-    console.log('true');
   }
 }
-const fullscreenChecker = setInterval(check, 500);
-document.addEventListener('keydown', event => {
+setInterval(check, 500); // Check fullscreen state every 500ms
+document.addEventListener('keydown', (event) => { // Run update function when 'Esc' clicked
   if (event.key == 'Escape' && isInFullscreen == true) {
     updateFullscreenIcon();
   }
 });
-function updateFullscreenIcon() {
+function updateFullscreenIcon() { // Switches fullscreen icons
   if (fullscreenButton.classList.contains('fullscreenOff')) {
     fullscreenButton.classList.replace('fullscreenOff', 'fullscreenOn');
   } else if (fullscreenButton.classList.contains('fullscreenOn')) {
     fullscreenButton.classList.replace('fullscreenOn', 'fullscreenOff');
   }
 }
-fullscreenButton.addEventListener('click', () => {
+fullscreenButton.addEventListener('click', () => { // Change fullscreen state on click
   check();
   if (isInFullscreen == true) {
     document.exitFullscreen();
@@ -108,22 +103,19 @@ fullscreenButton.addEventListener('click', () => {
   } else {
     throw new Error('Fullscreen Error: Variable is not a boolean');
   }
-});
-
-// Settings Button
+}); // -------------------------------------------------------------------------
+//                                     Settings Button
 const settingsButton = document.getElementById('settingsButton');
 const settingsBar = document.getElementById('settingsBar');
 settingsButton.addEventListener('click', () => {
   settingsBar.classList.add('settingsBarOut');
-});
-
-// Close Button
+}); // -------------------------------------------------------------------------
+//                                     Close Button
 const closeButton = document.getElementById('closeButton');
 closeButton.addEventListener('click', () => {
   settingsBar.classList.remove('settingsBarOut');
-});
-
-// Format Setting
+}); // -------------------------------------------------------------------------
+//                                     Format Setting
 const formatToggle = document.getElementById('formatToggle');
 const formatToggleNob = document.getElementById('formatToggleNob');
 formatToggle.addEventListener('click', () => {
@@ -137,26 +129,25 @@ formatToggle.addEventListener('click', () => {
     formatToggleNob.classList.remove('toggleNobOn');
   } else {
   }
-});
-
-// Next Theme Button
+}); // -------------------------------------------------------------------------
+//                                     Next Theme Button
 const nextThemeButton = document.getElementById('nextThemeButton');
 const background = document.getElementById('background');
 const formatText = document.getElementById('formatText');
 const secondsText = document.getElementById('secondsText');
-const lightThemes = [
+const lightThemes = [ // Array of light themes
   'backgroundLightTheme1',
   'backgroundLightTheme2',
   'backgroundLightTheme3',
   'backgroundLightTheme4',
 ];
-const darkThemes = [
+const darkThemes = [ // Array of dark themes
   'backgroundDarkTheme1',
   'backgroundDarkTheme2',
   'backgroundDarkTheme3',
   'backgroundDarkTheme4',
 ];
-const textThemes = [
+const textThemes = [ // Array of text themes
   'textTheme1',
   'textTheme2',
   'textTheme3',
@@ -165,27 +156,26 @@ const textThemes = [
   'textTheme6',
   'textTheme7',
 ];
-
-function updateTheme() {
-  const textNum = Math.floor(Math.random() * 10);
-  const themeNum = Math.floor(Math.random() * 10);
-  var isLight = theme === 'light';
-  var themes = isLight ? lightThemes : darkThemes;
-  var textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
-  var backgroundTheme = themes[Math.floor(themeNum / 2.5)];
+function updateTheme() { //                                 Function generates a random value corresponding
+  const textNum = Math.floor(Math.random() * 10); //        to a theme and text theme and applies them to
+  const themeNum = Math.floor(Math.random() * 10); //       various aspects of the app
+  const isLight = theme === 'light';
+  const themes = isLight ? lightThemes : darkThemes;
+  const textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
+  const backgroundTheme = themes[Math.floor(themeNum / 2.5)];
 
   if (backgroundTheme && textTheme) {
-    background.className = backgroundTheme;
-    formatText.className = textTheme;
-    secondsText.className = textTheme;
-    timeText.className = textTheme;
+    background.className = backgroundTheme; // Applies theme to background
+    formatText.className = textTheme; // Applies theme to format setting text
+    secondsText.className = textTheme; // Applies theme to seconds setting text
+    timeText.className = textTheme; // Applies theme to clock text
   } else {
-    throw new Error('Updating theme failed');
+    throw new Error('Updating theme failed'); // Thrown if textTheme or backgroundTheme have a value issue (should never happen)
   }
 }
-nextThemeButton.addEventListener('click', updateTheme);
-
-// Theme Button
+nextThemeButton.addEventListener('click', updateTheme); // Runs function on button click
+// -----------------------------------------------------------------------------
+//                                     Light/Dark Button
 const lightDarkButton = document.getElementById('lightDarkButton');
 updateTheme();
 if (theme == 'light') {
@@ -193,24 +183,23 @@ if (theme == 'light') {
 } else if (theme == 'dark') {
   lightDarkButton.classList.add('lightButton');
 }
-lightDarkButton.addEventListener('click', () => {
-  theme = theme === 'light' ? 'dark' : 'light';
-  updateTheme();
-  if (lightDarkButton.classList.contains('lightButton')) {
+lightDarkButton.addEventListener('click', () => { // Changes overall theme if button clicked
+  theme = theme === 'light' ? 'dark' : 'light'; // Returns dark or light depending on if 'theme' is light or not
+  updateTheme(); // Runs a theme update after updating the 'theme' variable
+  if (lightDarkButton.classList.contains('lightButton')) { // Replaces the light/dark icon when theme changes
     lightDarkButton.classList.replace('lightButton', 'darkButton');
   } else if (lightDarkButton.classList.contains('darkButton')) {
     lightDarkButton.classList.replace('darkButton', 'lightButton');
   } else {
-    throw new Error(
-      'Class list error: HTML element does not contain expected class',
+    throw new Error( // Thrown when 'lightDarkButton' does not contain either 'lightButton' or 'darkButton'
+        'Class list error: HTML element does not contain expected class',
     );
   }
-});
-
-// Seconds Setting
+}); // -------------------------------------------------------------------------
+//                                     Seconds Setting
 const secondsToggle = document.getElementById('secondsToggle');
 const secondsToggleNob = document.getElementById('secondsToggleNob');
-secondsToggle.addEventListener('click', () => {
+secondsToggle.addEventListener('click', () => { // Runs when clicking the seconds toggle in settings
   if (useSeconds == 'on') {
     useSeconds = 'off';
     secondsToggleNob.classList.remove('toggleNobOn');
@@ -220,10 +209,9 @@ secondsToggle.addEventListener('click', () => {
     secondsToggleNob.classList.add('toggleNobOn');
     secondsToggleNob.classList.remove('toggleNobOff');
   }
-});
-
-// Error Logging
-try {
+}); // -------------------------------------------------------------------------
+//                                     Error Logging
+try { // Currently no tries in case of thrown error
 } catch (e) {
-  console.error(e);
-}
+  console.error(e); // Logs thrown error message, stopping further program execution
+} // ---------------------------------------------------------------------------
