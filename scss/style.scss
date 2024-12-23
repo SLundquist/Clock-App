@@ -192,41 +192,45 @@ body {
 }
 
 .backgroundDarkTheme4 {
-  background: radial-gradient(circle at 50% 50%, rgb(32, 35, 37), rgb(14, 14, 16));
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(32, 35, 37),
+    rgb(14, 14, 16)
+  );
 }
 
 .textTheme1 {
   color: white;
   text-shadow: 0 0 2rem white;
-  font-family: 'Delius Swash Caps', sans-serif;
+  font-family: "Delius Swash Caps", sans-serif;
 }
 
 .textTheme2 {
   color: white;
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   font-weight: 900;
   letter-spacing: 1rem;
 }
 
 .textTheme3 {
-  font-family: 'Doto', monospace;
+  font-family: "Doto", monospace;
   font-weight: 900;
 }
 
 .textTheme4 {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-weight: 100;
 }
 
 .textTheme5 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: white;
   -webkit-text-fill-color: transparent;
 }
 
 .textTheme6 {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-weight: 900;
   letter-spacing: 4rem;
   text-shadow: 0 0 20rem #00000050, 0.5rem 0.5rem #ffffff90, 1rem 1rem #ffffff70,
@@ -234,7 +238,7 @@ body {
 }
 
 .textTheme7 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
   text-decoration: underline;
   text-underline-offset: 7rem;
