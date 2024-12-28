@@ -177,13 +177,14 @@ body {
 }
 
 .backgroundDarkTheme1 {
-  background: radial-gradient(circle at 50% 50%, #3a3a3a, #0f0f0f);
+  background: radial-gradient(circle at 50% 50%, #2b2b2b, #1b1b1b);
 }
 
 .backgroundDarkTheme2 {
   background: linear-gradient(to top left, transparent 0%, rgb(0, 0, 0) 100%),
-    linear-gradient(to top right, transparent, rgb(15, 15, 15)),
-    linear-gradient(to bottom left, transparent, rgb(29, 29, 29));
+    linear-gradient(to top right, transparent, rgb(24, 27, 32)),
+    linear-gradient(to bottom left, transparent, rgb(15, 15, 15)),
+    linear-gradient(to bottom right, transparent, rgb(70, 70, 70));
 }
 
 .backgroundDarkTheme3 {
@@ -193,8 +194,8 @@ body {
 .backgroundDarkTheme4 {
   background: radial-gradient(
     circle at 50% 50%,
-    rgb(32, 35, 37),
-    rgb(14, 14, 16)
+    rgb(21, 23, 24),
+    rgb(5, 5, 5)
   );
 }
 
