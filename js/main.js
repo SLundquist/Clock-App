@@ -1,10 +1,11 @@
-// Initial Settings
+// MARK:Initial Settings
 let theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?
   'dark' : // Dark/Light returned depending on the user's system preferences
   'light';
 let timeFormat = '24h'; // Initial time format set to 24h
 let useSeconds = 'off'; // Initially do not use seconds for cleaner first experience
-
+// -----------------------------------------------------------------------------
+// MARK:Time
 function currentTime() {
   // Creates time string based on settings
   const now = new Date();
@@ -15,8 +16,8 @@ function currentTime() {
   let seconds = now.getSeconds(); // Returns current seconds
   const secondsDigits = seconds.toString().length; // Returns # of digits of seconds var
   let composite; // will contain final composite of hours, minutes, and seconds depending on user preference
-  if (hoursDigits == 1) { // ---------------------------------------------------
-    hours = `0${hours}`; //            Adds preceding 0 if only 1 digit
+  if (hoursDigits == 1) {
+    hours = `0${hours}`; // Adds preceding 0 if only 1 digit
   } else {
   }
   if (minutesDigits == 1) {
@@ -26,8 +27,8 @@ function currentTime() {
   if (secondsDigits == 1) {
     seconds = `0${seconds}`;
   } else {
-  } // -------------------------------------------------------------------------
-  if (timeFormat == '24h') { //        Compiles either 24 or 12 hour format
+  }
+  if (timeFormat == '24h') { // Compiles either 24 or 12 hour format
     composite = `${hours}:${minutes}`;
   } else if (timeFormat == '12h') {
     if (hours <= 12) {
@@ -41,8 +42,8 @@ function currentTime() {
     throw new Error( // Thrown when 'timeFormat' is not either '24h' or '12h'
         'Time composite error: Variable "timeFormat" is using an invalid value',
     );
-  } // -------------------------------------------------------------------------
-  if (useSeconds == 'off') { //        Adds seconds as needed
+  }
+  if (useSeconds == 'off') { // Adds seconds as needed
     return composite;
   } else if (useSeconds == 'on') {
     composite = `${composite}:${seconds}`;
@@ -52,17 +53,16 @@ function currentTime() {
         'Time composite error: Variable "useSeconds" is using an invalid value',
     );
   }
-} // ---------------------------------------------------------------------------
-//                                     Function that updates the time text and site title
+}
 const timeText = document.getElementById('timeText');
 const title = document.getElementById('title');
-function updateTime() {
+function updateTime() { // Function that updates the time text and site title
   timeText.innerHTML = currentTime();
   title.innerHTML = `Clock App - ${currentTime()}`;
 }
 setInterval(updateTime, 500); // Updates the time every half second (500ms)
 // -----------------------------------------------------------------------------
-//                                     Fullscreen Button and Function
+// MARK:Fullscreen Button and Function
 const fullscreenButton = document.getElementById('fullscreenButton');
 let isInFullscreen = false;
 const screen = document.documentElement;
@@ -77,9 +77,10 @@ function check() {
     isInFullscreen = true; // Returned when in fullscreen
   }
 }
+// TODO: Fix broken eventListener
 setInterval(check, 500); // Check fullscreen state every 500ms
 document.addEventListener('keydown', (event) => { // Run update function when 'Esc' clicked
-  if (event.key == 'Escape' && isInFullscreen == true) {
+  if (event.key == '27-65' && isInFullscreen == true) {
     updateFullscreenIcon();
   }
 });
@@ -104,18 +105,18 @@ fullscreenButton.addEventListener('click', () => { // Change fullscreen state on
     throw new Error('Fullscreen Error: Variable is not a boolean');
   }
 }); // -------------------------------------------------------------------------
-//                                     Settings Button
+// MARK:Settings Button
 const settingsButton = document.getElementById('settingsButton');
 const settingsBar = document.getElementById('settingsBar');
 settingsButton.addEventListener('click', () => {
   settingsBar.classList.add('settingsBarOut');
 }); // -------------------------------------------------------------------------
-//                                     Close Button
+// MARK:Close Button
 const closeButton = document.getElementById('closeButton');
 closeButton.addEventListener('click', () => {
   settingsBar.classList.remove('settingsBarOut');
 }); // -------------------------------------------------------------------------
-//                                     Format Setting
+// MARK:Format Setting
 const formatToggle = document.getElementById('formatToggle');
 const formatToggleNob = document.getElementById('formatToggleNob');
 formatToggle.addEventListener('click', () => {
@@ -130,11 +131,13 @@ formatToggle.addEventListener('click', () => {
   } else {
   }
 }); // -------------------------------------------------------------------------
-//                                     Next Theme Button
+// MARK:Next Theme Button
 const nextThemeButton = document.getElementById('nextThemeButton');
 const background = document.getElementById('background');
 const formatText = document.getElementById('formatText');
 const secondsText = document.getElementById('secondsText');
+const themeSelectorText = document.getElementById('themeSelectorText');
+const textThemeSelectorText = document.getElementById('textThemeSelectorText');
 const lightThemes = [ // Array of light themes
   'backgroundLightTheme1',
   'backgroundLightTheme2',
@@ -169,13 +172,15 @@ function updateTheme() { //                                 Function generates a
     formatText.className = textTheme; // Applies theme to format setting text
     secondsText.className = textTheme; // Applies theme to seconds setting text
     timeText.className = textTheme; // Applies theme to clock text
+    themeSelectorText.className = textTheme; // Applies theme to theme selector title text
+    textThemeSelectorText.className = textTheme; // Applies theme to text theme selector text
   } else {
     throw new Error('Updating theme failed'); // Thrown if textTheme or backgroundTheme have a value issue (should never happen)
   }
 }
 nextThemeButton.addEventListener('click', updateTheme); // Runs function on button click
 // -----------------------------------------------------------------------------
-//                                     Light/Dark Button
+// MARK:Light/Dark Button
 const lightDarkButton = document.getElementById('lightDarkButton');
 updateTheme();
 if (theme == 'light') {
@@ -196,7 +201,7 @@ lightDarkButton.addEventListener('click', () => { // Changes overall theme if bu
     );
   }
 }); // -------------------------------------------------------------------------
-//                                     Seconds Setting
+// MARK:Seconds Setting
 const secondsToggle = document.getElementById('secondsToggle');
 const secondsToggleNob = document.getElementById('secondsToggleNob');
 secondsToggle.addEventListener('click', () => { // Runs when clicking the seconds toggle in settings
@@ -210,7 +215,17 @@ secondsToggle.addEventListener('click', () => { // Runs when clicking the second
     secondsToggleNob.classList.remove('toggleNobOff');
   }
 }); // -------------------------------------------------------------------------
-//                                     Error Logging
+// MARK:Theme Setting
+const themeContainer = document.getElementById('themeContainer');
+const customThemes = themeContainer.children;
+for (let i = 0; i < customThemes.length; i++) {
+  customThemes[i].addEventListener('click', () => {
+    const currentTheme = customThemes[i].classList;
+    background.className = currentTheme;
+  });
+}
+// -----------------------------------------------------------------------------
+// MARK:Error Handling
 try { // Currently no tries in case of thrown error
 } catch (e) {
   console.error(e); // Logs thrown error message, stopping further program execution

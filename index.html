@@ -29,22 +29,48 @@
     <div id="settingsBar" class="settingsBar">
       <div id="settingsInner">
         <div id="closeButton" class="buttonImg" alt=""></div>
-        <div id="settingsContainer">
-          <div class="toggleContainer">
-            <div id="formatToggle" class="toggle">
-              <div id="formatToggleNob" class="toggleNobOff"></div>
+        <div id="basicSettingsContainer">
+          <div class="settingBox">
+            <div class="toggleContainer">
+              <div id="formatToggle" class="toggle">
+                <div id="formatToggleNob" class="toggleNobOff"></div>
+              </div>
+            </div>
+            <div class="settingsTextBox">
+              <div class="textTheme1" id="formatText">Use 12h format</div>
             </div>
           </div>
-          <div class="settingsTextBox">
-            <div class="textLightTheme1" id="formatText">Use 12h format</div>
-          </div>
-          <div class="toggleContainer">
+          <div class="settingBox">
             <div id="secondsToggle" class="toggle">
               <div id="secondsToggleNob" class="toggleNobOff"></div>
             </div>
+            <div class="settingsTextBox">
+              <div class="textTheme1" id="secondsText">Use seconds</div>
+            </div>
           </div>
+        </div>
+        <div id="customThemeSettings">
           <div class="settingsTextBox">
-            <div class="textLightTheme1" id="secondsText">Use seconds</div>
+            <div class="textTheme1" id="themeSelectorText">
+              Background Themes
+            </div>
+          </div>
+          <div class="themeContainer" id="themeContainer">
+            <div class="backgroundLightTheme1" id="backgroundOption1"></div>
+            <div class="backgroundLightTheme2" id="backgroundOption2"></div>
+            <div class="backgroundLightTheme3" id="backgroundOption3"></div>
+            <div class="backgroundLightTheme4" id="backgroundOption4"></div>
+            <div class="backgroundDarkTheme1" id="backgroundOption5"></div>
+            <div class="backgroundDarkTheme2" id="backgroundOption6"></div>
+            <div class="backgroundDarkTheme3" id="backgroundOption7"></div>
+            <div class="backgroundDarkTheme4" id="backgroundOption8"></div>
+          </div>
+        </div>
+        <div class="customTextThemeSettings" id="customTextThemeSettings">
+          <div class="settingsTextBox">
+            <div class="textTheme1" id="textThemeSelectorText">
+              Text Themes
+            </div>
           </div>
         </div>
       </div>
