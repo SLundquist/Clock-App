@@ -1,6 +1,6 @@
 // MARK:Initial Settings
 let theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?
-  'dark' : // Dark/Light returned depending on the user's system preferences
+  'dark' : // dark or light returned depending on the user's system preferences
   'light';
 let timeFormat = '24h'; // Initial time format set to 24h
 let useSeconds = 'off'; // Initially do not use seconds for cleaner first experience
