@@ -172,8 +172,8 @@ body {
 }
 
 .backgroundLightTheme4 {
-  background: linear-gradient(45deg, rgb(33, 110, 186), transparent),
-    linear-gradient(45deg, transparent, rgb(149, 37, 110));
+  background: linear-gradient(to top right, rgb(49, 132, 216), transparent),
+    linear-gradient(to top right, transparent, rgb(224, 60, 167));
 }
 
 .backgroundDarkTheme1 {
@@ -192,11 +192,7 @@ body {
 }
 
 .backgroundDarkTheme4 {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgb(21, 23, 24),
-    rgb(5, 5, 5)
-  );
+  background: radial-gradient(circle at 50% 50%, rgb(21, 23, 24), rgb(5, 5, 5));
 }
 
 .textTheme1 {
@@ -248,8 +244,8 @@ body {
   position: absolute;
   right: 2rem;
   width: max;
-  background: #acacac30;
-  backdrop-filter: blur(1rem);
+  background: #acacac40;
+  backdrop-filter: blur(1.5rem);
   height: max;
   top: 2rem;
   bottom: 2rem;
@@ -397,4 +393,29 @@ body {
   &:hover {
     transform: scale(1.03);
   }
+}
+
+.textThemeContainer {
+  height: max;
+  width: max;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.textThemeContainer > * {
+  font-size: 4.2rem;
+  text-align: center;
+  padding: 2rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+hr {
+  border: 0.2rem solid white;
+  border-radius: 100rem;
+  margin: 2rem 0;
 }

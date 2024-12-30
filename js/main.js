@@ -225,6 +225,21 @@ for (let i = 0; i < customThemes.length; i++) {
   });
 }
 // -----------------------------------------------------------------------------
+// MARK:Text Theme Setting
+// MARK:Theme Setting
+const textThemeContainer = document.getElementById('textThemeContainer');
+const customTextThemes = textThemeContainer.children;
+for (let i = 0; i < customTextThemes.length; i++) {
+  customTextThemes[i].addEventListener('click', () => {
+    const currentTheme = customTextThemes[i].classList;
+    formatText.className = currentTheme; // Applies theme to format setting text
+    secondsText.className = currentTheme; // Applies theme to seconds setting text
+    timeText.className = currentTheme; // Applies theme to clock text
+    themeSelectorText.className = currentTheme; // Applies theme to theme selector title text
+    textThemeSelectorText.className = currentTheme; // Applies theme to text theme selector text
+  });
+}
+// -----------------------------------------------------------------------------
 // MARK:Error Handling
 try { // Currently no tries in case of thrown error
 } catch (e) {
