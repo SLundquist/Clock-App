@@ -38,6 +38,10 @@ body {
 
   #fullscreenButton {
     opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -157,12 +161,7 @@ body {
 }
 
 .backgroundLightTheme2 {
-  background: linear-gradient(
-      270deg,
-      rgb(231, 159, 64),
-      transparent,
-      transparent
-    ),
+  background: linear-gradient(270deg, rgb(231, 159, 64), transparent),
     linear-gradient(45deg, #aa224b, transparent),
     linear-gradient(135deg, #f9c107, transparent);
 }
@@ -173,18 +172,19 @@ body {
 }
 
 .backgroundLightTheme4 {
-  background: linear-gradient(45deg, rgb(33, 110, 186), transparent),
-    linear-gradient(45deg, transparent, rgb(149, 37, 110));
+  background: linear-gradient(to top right, rgb(49, 132, 216), transparent),
+    linear-gradient(to top right, transparent, rgb(224, 60, 167));
 }
 
 .backgroundDarkTheme1 {
-  background: radial-gradient(circle at 50% 50%, #3a3a3a, #0f0f0f);
+  background: radial-gradient(circle at 50% 50%, #2b2b2b, #1b1b1b);
 }
 
 .backgroundDarkTheme2 {
   background: linear-gradient(to top left, transparent 0%, rgb(0, 0, 0) 100%),
-    linear-gradient(to top right, transparent, rgb(15, 15, 15)),
-    linear-gradient(to bottom left, transparent, rgb(29, 29, 29));
+    linear-gradient(to top right, transparent, rgb(24, 27, 32)),
+    linear-gradient(to bottom left, transparent, rgb(15, 15, 15)),
+    linear-gradient(to bottom right, transparent, rgb(70, 70, 70));
 }
 
 .backgroundDarkTheme3 {
@@ -192,41 +192,42 @@ body {
 }
 
 .backgroundDarkTheme4 {
-  background: radial-gradient(circle at 50% 50%, rgb(32, 35, 37), rgb(14, 14, 16));
+  background: radial-gradient(circle at 50% 50%, rgb(21, 23, 24), rgb(5, 5, 5));
 }
 
 .textTheme1 {
   color: white;
   text-shadow: 0 0 2rem white;
-  font-family: 'Delius Swash Caps', sans-serif;
+  font-family: "Delius Swash Caps", sans-serif;
 }
 
 .textTheme2 {
   color: white;
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   font-weight: 900;
   letter-spacing: 1rem;
 }
 
 .textTheme3 {
-  font-family: 'Doto', monospace;
+  font-family: "Doto", monospace;
   font-weight: 900;
 }
 
 .textTheme4 {
-  font-family: 'Jost', sans-serif;
-  font-weight: 100;
+  font-family: "Jost", sans-serif;
+  font-weight: 200;
 }
 
 .textTheme5 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 900;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: white;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: #ffffff50;
 }
 
 .textTheme6 {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-weight: 900;
   letter-spacing: 4rem;
   text-shadow: 0 0 20rem #00000050, 0.5rem 0.5rem #ffffff90, 1rem 1rem #ffffff70,
@@ -234,10 +235,8 @@ body {
 }
 
 .textTheme7 {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  text-decoration: underline;
-  text-underline-offset: 7rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 
 .settingsBar {
@@ -245,7 +244,7 @@ body {
   position: absolute;
   right: 2rem;
   width: max;
-  background: #acacac30;
+  background: #acacac40;
   backdrop-filter: blur(1.5rem);
   height: max;
   top: 2rem;
@@ -257,6 +256,13 @@ body {
   display: flex;
   flex-flow: column nowrap;
   gap: 3rem;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.settingsBar::-webkit-scrollbar {
+  display: none;
 }
 
 .settingsBarOut {
@@ -266,22 +272,29 @@ body {
 
 #settingsInner {
   margin: 2rem;
-  height: max;
+  height: max-content;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 3rem;
 }
 
-#settingsContainer {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 50vh;
+#basicSettingsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 20vh;
+  gap: 3rem;
+}
+
+.settingBox {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
   gap: 3rem;
 }
 
 .toggleContainer {
-  height: max;
-  width: max;
   display: flex;
-  justify-content: end;
   align-items: center;
 }
 
@@ -289,14 +302,15 @@ body {
   height: 3rem;
   width: 6rem;
   border-radius: 100vh;
-  border: 1px solid #ffffff;
+  border: 0.1rem solid #ffffff;
   background: #ffffff40;
   display: flex;
   flex-flow: row nowrap;
 
   &:hover {
     .toggleNobOff {
-      box-shadow: 0 0 1rem white;
+      box-shadow: 0 0 0 0.1rem #ffffff inset, 0 0 1rem white,
+        0 0 1rem white inset;
     }
 
     .toggleNobOn {
@@ -309,8 +323,9 @@ body {
   height: 3rem;
   width: 3rem;
   border-radius: 100vh;
-  background: #ffffff;
+  background: transparent;
   pointer-events: none;
+  box-shadow: 0 0 0 0.1rem #ffffff inset;
 }
 
 .toggleNobOn {
@@ -324,7 +339,6 @@ body {
 
 .settingsTextBox {
   display: flex;
-  justify-content: start;
   align-items: center;
 }
 
@@ -332,10 +346,76 @@ body {
   font-size: 4.2rem;
   letter-spacing: normal !important;
   text-shadow: none !important;
+  text-decoration: none !important;
 }
 
 #formatText {
   font-size: 4.2rem;
   letter-spacing: normal !important;
   text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+#themeSelectorText {
+  font-size: 4.2rem;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+#textThemeSelectorText {
+  font-size: 4.2rem;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+#customThemeSettings {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr;
+  height: 60vh;
+  gap: 2rem;
+}
+
+.themeContainer {
+  height: max;
+  width: max;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.themeContainer > * {
+  border-radius: 1.5rem;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.textThemeContainer {
+  height: max;
+  width: max;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.textThemeContainer > * {
+  font-size: 4.2rem;
+  text-align: center;
+  padding: 2rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+hr {
+  border: 0.2rem solid white;
+  border-radius: 100rem;
+  margin: 2rem 0;
 }

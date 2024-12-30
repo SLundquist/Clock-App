@@ -31,6 +31,7 @@ export default [
         },
       ],
       'quotes': ['error', 'single', {avoidEscape: true}], // Enforce single quotes
+      'no-var': ['warn'],
     },
   },
 ];
