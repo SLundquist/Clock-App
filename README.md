@@ -7,9 +7,9 @@ An aesthetic clock app by Silas Lundquist.
 - Fullscreen mode
 - 12h or 24h mode
 - Option for seconds
+- Background and text theme selector
 
 ## Coming Features
-- Background and text theme selector
 - Custom background theme maker
 - Timer and alarm
 
