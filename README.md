@@ -30,4 +30,4 @@ To make a suggestion or report a bug, please create a new issue in 'Issues'. Ple
 - sass
 - Prettier
 
-To check for JS format issues, use 'npm run lint' in the terminal. To compile both JS and SASS, run 'gulp' in the terminal. Use prettier to format all languages except JS (and potentially TS).
+To check for JS format issues, use 'npm run lint' in the terminal. To compile both JS and SASS as well as run browser-sync (for real-time viewing of changes), run 'gulp' in the terminal. Use prettier to format all languages except JS (and potentially TS).
