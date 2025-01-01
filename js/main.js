@@ -18,15 +18,12 @@ function currentTime() {
   let composite; // will contain final composite of hours, minutes, and seconds depending on user preference
   if (hoursDigits == 1) {
     hours = `0${hours}`; // Adds preceding 0 if only 1 digit
-  } else {
   }
   if (minutesDigits == 1) {
     minutes = `0${minutes}`;
-  } else {
   }
   if (secondsDigits == 1) {
     seconds = `0${seconds}`;
-  } else {
   }
   if (timeFormat == '24h') { // Compiles either 24 or 12 hour format
     composite = `${hours}:${minutes}`;
@@ -77,13 +74,6 @@ function check() {
     isInFullscreen = true; // Returned when in fullscreen
   }
 }
-// TODO: Fix broken eventListener
-setInterval(check, 500); // Check fullscreen state every 500ms
-document.addEventListener('keydown', (event) => { // Run update function when 'Esc' clicked
-  if (event.key == '27-65' && isInFullscreen == true) {
-    updateFullscreenIcon();
-  }
-});
 function updateFullscreenIcon() { // Switches fullscreen icons
   if (fullscreenButton.classList.contains('fullscreenOff')) {
     fullscreenButton.classList.replace('fullscreenOff', 'fullscreenOn');
