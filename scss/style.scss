@@ -1,3 +1,8 @@
+// Style variables
+$uiBackground: #b4b4b438;
+$textColor: #f7f7f7;
+$titleSize: 4.2rem;
+
 * {
   margin: 0;
   padding: 0;
@@ -43,16 +48,21 @@ body {
       opacity: 1;
     }
   }
+  .tooltip {
+    display: none !important;
+  }
 }
 
 #rim {
+  z-index: 1000;
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5rem #000000 inset;
+  box-shadow: 0 0 4rem #000000 inset, 0 0 0 10rem #000000;
+  border-radius: 4.5rem;
 }
 
 #background {
@@ -65,6 +75,7 @@ body {
 }
 
 #buttons {
+  z-index: 1001;
   position: fixed;
   bottom: 1.5rem;
   right: 2rem;
@@ -137,6 +148,8 @@ body {
   mask: url(../icons/closeIcon.svg);
   mask-size: cover;
   mask-repeat: no-repeat;
+  position: absolute;
+  right: 5rem;
 }
 
 .buttonImg {
@@ -150,20 +163,45 @@ body {
   }
 }
 
+.tooltipOn {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  text-wrap-mode: nowrap;
+  position: absolute;
+  background: #0f0f0f50;
+  backdrop-filter: blur(1.5rem);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 10rem;
+  font-size: 1.6rem;
+  z-index: 2003;
+  height: 2.4rem;
+  font-family: "Lexend", sans-serif;
+  bottom: 0;
+  right: 20rem;
+}
+
+.tooltipOff {
+  display: none;
+}
+
 #timeText {
   font-size: 12vw;
 }
 
 .backgroundLightTheme1 {
-  background: linear-gradient(-45deg, rgb(231, 64, 64) 0%, #0000 100%),
-    linear-gradient(45deg, #2cbcff, transparent),
-    linear-gradient(220deg, #85ff55, transparent);
+  background: linear-gradient(to top left, rgb(233, 70, 70) 0%, #0000 100%),
+    linear-gradient(to top right, #008cff, transparent),
+    linear-gradient(to bottom left, #eafa11, transparent);
 }
 
 .backgroundLightTheme2 {
-  background: linear-gradient(270deg, rgb(231, 159, 64), transparent),
-    linear-gradient(45deg, #aa224b, transparent),
-    linear-gradient(135deg, #f9c107, transparent);
+  background: linear-gradient(to bottom left, rgb(240, 143, 17), transparent),
+    linear-gradient(to top right, #c9254e, transparent),
+    linear-gradient(to bottom right, #f164e6, transparent),
+    linear-gradient(to top left, #52ff02, transparent);
 }
 
 .backgroundLightTheme3 {
@@ -174,6 +212,112 @@ body {
 .backgroundLightTheme4 {
   background: linear-gradient(to top right, rgb(49, 132, 216), transparent),
     linear-gradient(to top right, transparent, rgb(224, 60, 167));
+}
+
+.backgroundLightTheme5 {
+  background: linear-gradient(to top right, rgb(55, 211, 68), rgb(38, 68, 204));
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(
+      to top left,
+      rgb(226, 223, 60),
+      transparent,
+      rgb(111, 98, 233)
+    );
+  }
+}
+
+.backgroundLightTheme6 {
+  background: radial-gradient(
+      circle at 0% 0%,
+      #b61b1b,
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 0% 50%,
+      rgb(45, 139, 247),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgb(138, 40, 250),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 25% 0%,
+      rgb(51, 243, 250),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 25% 50%,
+      rgb(247, 198, 38),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 25% 100%,
+      rgb(26, 70, 192),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 50% 0%,
+      rgb(243, 61, 115),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgb(240, 151, 79),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgb(131, 170, 150),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 75% 0%,
+      rgb(210, 27, 235),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 75% 100%,
+      rgb(45, 223, 113),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgb(182, 27, 27),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 100% 50%,
+      rgb(235, 76, 3),
+      transparent,
+      transparent
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgb(24, 245, 179),
+      transparent,
+      transparent
+    );
 }
 
 .backgroundDarkTheme1 {
@@ -193,6 +337,18 @@ body {
 
 .backgroundDarkTheme4 {
   background: radial-gradient(circle at 50% 50%, rgb(21, 23, 24), rgb(5, 5, 5));
+}
+
+.backgroundDarkTheme5 {
+  background: radial-gradient(
+    circle at 100% 100%,
+    rgb(9, 1, 36),
+    rgb(47, 53, 80)
+  );
+}
+
+.backgroundDarkTheme6 {
+  background: linear-gradient(to top right, rgb(33, 48, 25), rgb(5, 15, 0));
 }
 
 .textTheme1 {
@@ -240,22 +396,21 @@ body {
 }
 
 .settingsBar {
-  z-index: 2;
+  z-index: 1002;
   position: absolute;
-  right: 2rem;
+  right: 3rem;
   width: max;
-  background: #acacac40;
+  background: $uiBackground;
   backdrop-filter: blur(1.5rem);
   height: max;
-  top: 2rem;
-  bottom: 2rem;
-  left: 2rem;
-  border-radius: 3rem;
+  top: 3rem;
+  bottom: 3rem;
+  left: 3rem;
+  border-radius: 1.5rem;
   opacity: 0;
   pointer-events: none;
   display: flex;
   flex-flow: column nowrap;
-  gap: 3rem;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -271,18 +426,17 @@ body {
 }
 
 #settingsInner {
-  margin: 2rem;
+  margin: 6rem;
   height: max-content;
   display: flex;
   flex-flow: column nowrap;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 #basicSettingsContainer {
   display: flex;
   flex-flow: column nowrap;
-  height: 20vh;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .settingBox {
@@ -343,47 +497,57 @@ body {
 }
 
 #secondsText {
-  font-size: 4.2rem;
+  font-size: $titleSize;
   letter-spacing: normal !important;
   text-shadow: none !important;
   text-decoration: none !important;
+  #textTheme5 {
+    -webkit-text-stroke-width: 0.2rem;
+  }
 }
 
 #formatText {
-  font-size: 4.2rem;
+  font-size: $titleSize;
   letter-spacing: normal !important;
   text-shadow: none !important;
   text-decoration: none !important;
+  #textTheme5 {
+    -webkit-text-stroke-width: 0.2rem;
+  }
 }
 
 #themeSelectorText {
-  font-size: 4.2rem;
+  font-size: $titleSize;
   letter-spacing: normal !important;
   text-shadow: none !important;
   text-decoration: none !important;
+  #textTheme5 {
+    -webkit-text-stroke-width: 0.2rem;
+  }
 }
 
 #textThemeSelectorText {
-  font-size: 4.2rem;
+  font-size: $titleSize;
   letter-spacing: normal !important;
   text-shadow: none !important;
   text-decoration: none !important;
+
+  #textTheme5 {
+    -webkit-text-stroke-width: 0.2rem;
+  }
 }
 
 #customThemeSettings {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 5fr;
-  height: 60vh;
   gap: 2rem;
 }
 
 .themeContainer {
-  height: max;
-  width: max;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 1rem;
 }
 
@@ -391,13 +555,19 @@ body {
   border-radius: 1.5rem;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
+  }
+}
+
+#backgroundOption5 {
+  overflow: hidden;
+
+  &::after {
+    display: none;
   }
 }
 
 .textThemeContainer {
-  height: max;
-  width: max;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -414,8 +584,6 @@ body {
   }
 }
 
-hr {
-  border: 0.2rem solid white;
-  border-radius: 100rem;
-  margin: 2rem 0;
+#textThemeOption6 {
+  letter-spacing: 0.5rem;
 }

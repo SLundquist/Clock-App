@@ -133,12 +133,16 @@ const lightThemes = [ // Array of light themes
   'backgroundLightTheme2',
   'backgroundLightTheme3',
   'backgroundLightTheme4',
+  'backgroundLightTheme5',
+  'backgroundLightTheme6',
 ];
 const darkThemes = [ // Array of dark themes
   'backgroundDarkTheme1',
   'backgroundDarkTheme2',
   'backgroundDarkTheme3',
   'backgroundDarkTheme4',
+  'backgroundDarkTheme5',
+  'backgroundDarkTheme6',
 ];
 const textThemes = [ // Array of text themes
   'textTheme1',
@@ -155,7 +159,7 @@ function updateTheme() { //                                 Function generates a
   const isLight = theme === 'light';
   const themes = isLight ? lightThemes : darkThemes;
   const textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
-  const backgroundTheme = themes[Math.floor(themeNum / 2.5)];
+  const backgroundTheme = themes[Math.floor(themeNum / 1.6666667)];
 
   if (backgroundTheme && textTheme) {
     background.className = backgroundTheme; // Applies theme to background
@@ -228,8 +232,18 @@ for (let i = 0; i < customTextThemes.length; i++) {
     themeSelectorText.className = currentTheme; // Applies theme to theme selector title text
     textThemeSelectorText.className = currentTheme; // Applies theme to text theme selector text
   });
-}
-// -----------------------------------------------------------------------------
+} // ---------------------------------------------------------------------------
+// MARK:Tooltip
+const tooltipLaunchers = document.getElementsByClassName('tooltipLauncher');
+for (let i = 0; i < tooltipLaunchers.length; i++) {
+  const currentTooltip = document.getElementById(`tooltip${i}`);
+  tooltipLaunchers[i].addEventListener('mouseenter', () => {
+    currentTooltip.classList.replace('tooltipOff', 'tooltipOn');
+  });
+  tooltipLaunchers[i].addEventListener('mouseleave', () => {
+    currentTooltip.classList.replace('tooltipOn', 'tooltipOff');
+  });
+} // ---------------------------------------------------------------------------
 // MARK:Error Handling
 try { // Currently no tries in case of thrown error
 } catch (e) {
