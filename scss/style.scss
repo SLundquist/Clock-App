@@ -6,12 +6,15 @@ $titleSize: 4.2rem;
 * {
   margin: 0;
   padding: 0;
-  border: 0;
+  border: none;
   background: transparent;
-  font-size: 10px;
   transition: all 0.5s cubic-bezier(0, 0.84, 0.23, 1);
   color: white;
   cursor: default;
+}
+
+html {
+  font-size: 10px;
 }
 
 body {
@@ -164,7 +167,12 @@ body {
 }
 
 .tooltipOn {
+  opacity: 1 !important;
+}
+
+.tooltipOff {
   display: flex;
+  opacity: 0;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
@@ -181,10 +189,6 @@ body {
   font-family: "Lexend", sans-serif;
   bottom: 0;
   right: 20rem;
-}
-
-.tooltipOff {
-  display: none;
 }
 
 #timeText {
@@ -395,6 +399,19 @@ body {
   font-weight: 700;
 }
 
+.textTheme8 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 800;
+}
+
+.textTheme9 {
+  font-family: "Monoton", sans-serif;
+}
+
+.textTheme10 {
+  font-family: "Dela Gothic One", sans-serif;
+}
+
 .settingsBar {
   z-index: 1002;
   position: absolute;
@@ -546,9 +563,11 @@ body {
 
 .themeContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-rows: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1rem;
+  height: 90vh;
 }
 
 .themeContainer > * {
@@ -569,8 +588,9 @@ body {
 
 .textThemeContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-rows: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1rem;
 }
 

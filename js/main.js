@@ -6,8 +6,7 @@ let timeFormat = '24h'; // Initial time format set to 24h
 let useSeconds = 'off'; // Initially do not use seconds for cleaner first experience
 // -----------------------------------------------------------------------------
 // MARK:Time
-function currentTime() {
-  // Creates time string based on settings
+function currentTime() { // Creates time string based on settings
   const now = new Date();
   let hours = now.getHours(); // Returns current hours
   const hoursDigits = hours.toString().length; // Returns # of digits of hours var
@@ -57,7 +56,7 @@ function updateTime() { // Function that updates the time text and site title
   timeText.innerHTML = currentTime();
   title.innerHTML = `Clock App - ${currentTime()}`;
 }
-setInterval(updateTime, 500); // Updates the time every half second (500ms)
+setInterval(updateTime, 500); // Updates the time
 // -----------------------------------------------------------------------------
 // MARK:Fullscreen Button and Function
 const fullscreenButton = document.getElementById('fullscreenButton');
@@ -128,7 +127,15 @@ const formatText = document.getElementById('formatText');
 const secondsText = document.getElementById('secondsText');
 const themeSelectorText = document.getElementById('themeSelectorText');
 const textThemeSelectorText = document.getElementById('textThemeSelectorText');
-const lightThemes = [ // Array of light themes
+const textElements = [
+  timeText, formatText, secondsText, themeSelectorText, textThemeSelectorText,
+];
+function applyClassToArray(array, classToApply) {
+  for (let i = 0; i < array.length; i++) {
+    array[i].className = classToApply;
+  }
+}
+const lightThemes = [
   'backgroundLightTheme1',
   'backgroundLightTheme2',
   'backgroundLightTheme3',
@@ -136,7 +143,7 @@ const lightThemes = [ // Array of light themes
   'backgroundLightTheme5',
   'backgroundLightTheme6',
 ];
-const darkThemes = [ // Array of dark themes
+const darkThemes = [
   'backgroundDarkTheme1',
   'backgroundDarkTheme2',
   'backgroundDarkTheme3',
@@ -144,7 +151,7 @@ const darkThemes = [ // Array of dark themes
   'backgroundDarkTheme5',
   'backgroundDarkTheme6',
 ];
-const textThemes = [ // Array of text themes
+const textThemes = [
   'textTheme1',
   'textTheme2',
   'textTheme3',
@@ -152,22 +159,45 @@ const textThemes = [ // Array of text themes
   'textTheme5',
   'textTheme6',
   'textTheme7',
+  'textTheme8',
+  'textTheme9',
+  'textTheme10',
 ];
-function updateTheme() { //                                 Function generates a random value corresponding
-  const textNum = Math.floor(Math.random() * 10); //        to a theme and text theme and applies them to
-  const themeNum = Math.floor(Math.random() * 10); //       various aspects of the app
-  const isLight = theme === 'light';
-  const themes = isLight ? lightThemes : darkThemes;
-  const textTheme = textThemes[Math.floor(textNum / (10 / textThemes.length))];
-  const backgroundTheme = themes[Math.floor(themeNum / 1.6666667)];
 
-  if (backgroundTheme && textTheme) {
-    background.className = backgroundTheme; // Applies theme to background
-    formatText.className = textTheme; // Applies theme to format setting text
-    secondsText.className = textTheme; // Applies theme to seconds setting text
-    timeText.className = textTheme; // Applies theme to clock text
-    themeSelectorText.className = textTheme; // Applies theme to theme selector title text
-    textThemeSelectorText.className = textTheme; // Applies theme to text theme selector text
+function randomInt(max) { // Returns a random integer
+  return Math.floor(Math.random() * max);
+}
+
+function themePicker(outputType) { // takes one argument. expected to be either 'text' or 'background' and returns a respective random theme
+  if (outputType == 'text') {
+    const textTheme = textThemes[randomInt(textThemes.length)];
+    return textTheme;
+  } else if (outputType == 'background') {
+    const isLight = theme === 'light';
+    const themes = isLight ? lightThemes : darkThemes;
+    const backgroundTheme = themes[randomInt(themes.length)];
+    return backgroundTheme;
+  } else {
+    throw new Error('themePicker failed: Input not valid');
+  }
+}
+
+function updateTheme() {
+  let textThemeToApply = themePicker('text');
+  if (textThemeToApply == timeText.className) {
+    while (textThemeToApply == timeText.className) {
+      textThemeToApply = themePicker('text');
+    }
+  }
+  let backgroundThemeToApply = themePicker('background');
+  if (backgroundThemeToApply == timeText.className) {
+    while (backgroundThemeToApply == timeText.className) {
+      backgroundThemeToApply = themePicker('background');
+    }
+  }
+  if (backgroundThemeToApply && textThemeToApply) {
+    background.className = backgroundThemeToApply; // Applies theme to background
+    applyClassToArray(textElements, textThemeToApply); // Applies text theme to all text elements
   } else {
     throw new Error('Updating theme failed'); // Thrown if textTheme or backgroundTheme have a value issue (should never happen)
   }
@@ -220,17 +250,12 @@ for (let i = 0; i < customThemes.length; i++) {
 }
 // -----------------------------------------------------------------------------
 // MARK:Text Theme Setting
-// MARK:Theme Setting
 const textThemeContainer = document.getElementById('textThemeContainer');
 const customTextThemes = textThemeContainer.children;
 for (let i = 0; i < customTextThemes.length; i++) {
   customTextThemes[i].addEventListener('click', () => {
     const currentTheme = customTextThemes[i].classList;
-    formatText.className = currentTheme; // Applies theme to format setting text
-    secondsText.className = currentTheme; // Applies theme to seconds setting text
-    timeText.className = currentTheme; // Applies theme to clock text
-    themeSelectorText.className = currentTheme; // Applies theme to theme selector title text
-    textThemeSelectorText.className = currentTheme; // Applies theme to text theme selector text
+    applyClassToArray(textElements, currentTheme); // Applies text theme to all text elements
   });
 } // ---------------------------------------------------------------------------
 // MARK:Tooltip
@@ -238,14 +263,16 @@ const tooltipLaunchers = document.getElementsByClassName('tooltipLauncher');
 for (let i = 0; i < tooltipLaunchers.length; i++) {
   const currentTooltip = document.getElementById(`tooltip${i}`);
   tooltipLaunchers[i].addEventListener('mouseenter', () => {
-    currentTooltip.classList.replace('tooltipOff', 'tooltipOn');
+    currentTooltip.classList.add('tooltipOn');
   });
   tooltipLaunchers[i].addEventListener('mouseleave', () => {
-    currentTooltip.classList.replace('tooltipOn', 'tooltipOff');
+    currentTooltip.classList.remove('tooltipOn');
   });
 } // ---------------------------------------------------------------------------
 // MARK:Error Handling
 try { // Currently no tries in case of thrown error
 } catch (e) {
   console.error(e); // Logs thrown error message, stopping further program execution
+} finally {
+  console.log('execution completed');
 } // ---------------------------------------------------------------------------

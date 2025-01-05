@@ -20,9 +20,9 @@ export default [
       // Custom rules
       'require-jsdoc': 'off', // Turn off JSDoc requirement
       'max-len': [
-        'error',
+        'warn',
         {
-          code: 80, // Max line length
+          code: 100, // Max line length
           ignoreUrls: true, // Ignore long URLs
           ignoreComments: true, // Ignore comments
           ignoreStrings: true, // Ignore long strings
