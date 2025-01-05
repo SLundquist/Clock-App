@@ -1,5 +1,5 @@
 # Clock App
-An aesthetic clock app by Silas Lundquist.
+An aesthetic clock app.
 
 ## Features
 - Light and Dark Background Themes
