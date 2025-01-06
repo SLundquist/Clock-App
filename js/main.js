@@ -1,3 +1,13 @@
+// MARK:Utilities
+function applyClassToArray(array, classToApply) {
+  for (let i = 0; i < array.length; i++) {
+    array[i].className = classToApply;
+  }
+}
+function randomInt(max) { // Returns a random integer
+  return Math.floor(Math.random() * max);
+}
+// -----------------------------------------------------------------------------
 // MARK:Initial Settings
 let theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?
   'dark' : // dark or light returned depending on the user's system preferences
@@ -93,7 +103,21 @@ fullscreenButton.addEventListener('click', () => { // Change fullscreen state on
   } else {
     throw new Error('Fullscreen Error: Variable is not a boolean');
   }
-}); // -------------------------------------------------------------------------
+});
+document.addEventListener('fullscreenchange', exitHandler);
+document.addEventListener('webkitfullscreenchange', exitHandler);
+document.addEventListener('mozfullscreenchange', exitHandler);
+document.addEventListener('MSFullscreenChange', exitHandler);
+
+function exitHandler() {
+  if (!document.fullscreenElement &&
+    !document.webkitIsFullScreen &&
+    !document.mozFullScreen &&
+    !document.msFullscreenElement) {
+    updateFullscreenIcon();
+  }
+}
+// -------------------------------------------------------------------------
 // MARK:Settings Button
 const settingsButton = document.getElementById('settingsButton');
 const settingsBar = document.getElementById('settingsBar');
@@ -130,11 +154,6 @@ const textThemeSelectorText = document.getElementById('textThemeSelectorText');
 const textElements = [
   timeText, formatText, secondsText, themeSelectorText, textThemeSelectorText,
 ];
-function applyClassToArray(array, classToApply) {
-  for (let i = 0; i < array.length; i++) {
-    array[i].className = classToApply;
-  }
-}
 const lightThemes = [
   'backgroundLightTheme1',
   'backgroundLightTheme2',
@@ -163,11 +182,6 @@ const textThemes = [
   'textTheme9',
   'textTheme10',
 ];
-
-function randomInt(max) { // Returns a random integer
-  return Math.floor(Math.random() * max);
-}
-
 function themePicker(outputType) { // takes one argument. expected to be either 'text' or 'background' and returns a respective random theme
   if (outputType == 'text') {
     const textTheme = textThemes[randomInt(textThemes.length)];

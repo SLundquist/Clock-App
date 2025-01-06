@@ -18,7 +18,7 @@ const browserSyncServer = browserSync.create();
 const paths = {
   scss: './scss/**/*.scss', // SCSS pull location
   css: './css', // CSS output location
-  js: './js/**/*.js', // JS pull location
+  js: './js/main.js', // JS pull location
   compiledJS: './minifiedJS', // JS output location
 };
 
