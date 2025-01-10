@@ -86,9 +86,10 @@ body {
   flex-flow: row nowrap;
   gap: 2rem;
   height: 3rem;
-  width: 18rem;
-  justify-content: center;
+  width: 19rem;
+  justify-content: space-between;
   align-items: center;
+  overflow: visible;
 }
 
 #fullscreenButton {
@@ -101,12 +102,14 @@ body {
   mask: url(../icons/fullscreenExit.svg);
   mask-size: cover;
   mask-repeat: no-repeat;
+  overflow: visible;
 }
 
 .fullscreenOff {
   mask: url(../icons/fullscreenEnter.svg);
   mask-size: cover;
   mask-repeat: no-repeat;
+  overflow: visible;
 }
 
 #settingsButton {
@@ -152,18 +155,14 @@ body {
   mask-size: cover;
   mask-repeat: no-repeat;
   position: absolute;
-  right: 5rem;
+  right: 4.5rem;
+  top: 4.5rem;
 }
 
 .buttonImg {
   height: 3rem;
   width: 3rem;
   background: white;
-  box-shadow: 0rem 0rem 2rem #ffffff;
-
-  &:hover {
-    transform: scale(1.08);
-  }
 }
 
 .tooltipOn {
@@ -188,11 +187,11 @@ body {
   height: 2.4rem;
   font-family: "Lexend", sans-serif;
   bottom: 0;
-  right: 20rem;
+  right: 21rem;
 }
 
 #timeText {
-  font-size: 12vw;
+  font-size: 13vw;
 }
 
 .backgroundLightTheme1 {
@@ -324,6 +323,14 @@ body {
     );
 }
 
+.backgroundLightTheme7 {
+  background: linear-gradient(
+    to top right,
+    rgb(255, 255, 255),
+    rgb(254, 255, 255)
+  );
+}
+
 .backgroundDarkTheme1 {
   background: radial-gradient(circle at 50% 50%, #2b2b2b, #1b1b1b);
 }
@@ -381,9 +388,6 @@ body {
 .textTheme5 {
   font-family: "Roboto Mono", monospace;
   font-weight: 900;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: white;
-  -webkit-text-fill-color: #ffffff50;
 }
 
 .textTheme6 {
@@ -411,6 +415,15 @@ body {
 
 .textTheme10 {
   font-family: "Dela Gothic One", sans-serif;
+}
+
+.textTheme11 {
+  font-family: "Tsukimi Rounded", sans-serif;
+}
+
+.textTheme12 {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
 }
 
 .settingsBar {

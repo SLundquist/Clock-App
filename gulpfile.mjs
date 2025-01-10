@@ -8,18 +8,21 @@ import gulp from 'gulp';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import gulpSass from 'gulp-sass';
-import * as sass from 'sass';
 import terser from 'gulp-terser';
+import gulpTypescript from 'gulp-typescript';
+import * as sass from 'sass';
 
 const sassCompiler = gulpSass(sass);
 const browserSyncServer = browserSync.create();
 
 // Define file paths
 const paths = {
-  scss: './scss/**/*.scss', // SCSS pull location
-  css: './css', // CSS output location
-  js: './js/main.js', // JS pull location
-  compiledJS: './minifiedJS', // JS output location
+  scss: './scss/**/*.scss',
+  css: './css',
+  js: './js/main.js',
+  jsOut: './js',
+  compiledJS: './minifiedJS',
+  ts: './ts/**/*.ts',
 };
 
 // Compile SCSS to CSS
@@ -33,11 +36,20 @@ const compileSCSS = () => {
       .pipe(browserSyncServer.stream()); // Stream changes to browser
 };
 
+const tsProject = gulpTypescript.createProject('tsconfig.json');
+
+const compileTS = () => {
+  return tsProject
+      .src()
+      .pipe(tsProject())
+      .pipe(gulp.dest(paths.jsOut)); // Output compiled JS to the specified directory
+};
+
 const minifyJS = () => {
   return gulp
-      .src(paths.js)
-      .pipe(terser())
-      .pipe(gulp.dest(paths.compiledJS));
+      .src(`${paths.jsOut}/**/*.js`) // Use the compiled JS files as the source
+      .pipe(terser()) // Minify the JS
+      .pipe(gulp.dest(paths.compiledJS)); // Output minified JS to the specified directory
 };
 
 // Watch files for changes
@@ -49,7 +61,8 @@ const watchFiles = () => {
   });
   gulp.watch(paths.scss, compileSCSS); // Watch SCSS files
   gulp.watch('./*.html').on('change', browserSyncServer.reload); // Reload on HTML changes
-  gulp.watch(paths.js, minifyJS); // Watch JS files
+  gulp.watch(paths.ts, gulp.series(compileTS, minifyJS)); // Watch TS files, compile and minify
+  gulp.watch(`${paths.compiledJS}/**/*.js`).on('change', browserSyncServer.reload); // Reload on JS changes
 };
 
 // Export tasks

@@ -3,7 +3,7 @@ import googleConfig from 'eslint-config-google';
 export default [
   {
     files: ['**/*.js', '**/*.mjs'], // Target JavaScript files
-    ignores: ['node_modules/**', 'dist/**', 'minifiedJS/main.js'], // Ignore common folders
+    ignores: ['node_modules/**', 'dist/**', 'minifiedJS/main.js', 'js/main.js'], // Ignore common folders
     languageOptions: {
       ecmaVersion: 2021, // Use modern JavaScript
       sourceType: 'module', // ES modules
