@@ -27,6 +27,7 @@ To make a suggestion or report a bug, please create a new issue in 'Issues'. Ple
 - gulp-clean-css
 - gulp-sass
 - gulp-terser
+- gulp-typescript
 - sass
 - Prettier
 
