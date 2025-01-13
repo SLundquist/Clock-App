@@ -585,29 +585,21 @@ body {
   height: 90vh;
 }
 
-.themeContainer > * {
+.background-wrapper {
   border-radius: 1.5rem;
-  z-index: 1004;
-  display: absolute;
+  z-index: 1004;  
+  position: relative;
   overflow: hidden;
+  background: white;
 
   &:hover {
     transform: scale(1.02);
   }
+}
 
-  // &::before {
-  //   display: flex;
-  //   flex-flow: row nowrap;
-  //   justify-content: center;
-  //   align-items: center;
-  //   content: "";
-  //   pointer-events: none;
-  //   height: 100%;
-  //   width: 100%;
-  //   position: relative;
-  //   background: #ffffff;
-  //   z-index: 1;
-  // }
+.background-wrapper > * {
+  width: 100%;
+  height: 100%;
 }
 
 #backgroundOption5 {
