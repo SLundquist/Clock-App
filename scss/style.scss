@@ -1,5 +1,6 @@
 // Style variables
 $uiBackground: #b4b4b438;
+$whiteModeUIBackground: #4b4b4b38;
 $textColor: #f7f7f7;
 $titleSize: 4.2rem;
 
@@ -586,10 +587,27 @@ body {
 
 .themeContainer > * {
   border-radius: 1.5rem;
+  z-index: 1004;
+  display: absolute;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.02);
   }
+
+  // &::before {
+  //   display: flex;
+  //   flex-flow: row nowrap;
+  //   justify-content: center;
+  //   align-items: center;
+  //   content: "";
+  //   pointer-events: none;
+  //   height: 100%;
+  //   width: 100%;
+  //   position: relative;
+  //   background: #ffffff;
+  //   z-index: 1;
+  // }
 }
 
 #backgroundOption5 {
