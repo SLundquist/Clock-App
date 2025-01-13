@@ -222,11 +222,13 @@ formatToggle === null || formatToggle === void 0 ? void 0 : formatToggle.addEven
         timeFormat = '12h';
         formatToggleNob === null || formatToggleNob === void 0 ? void 0 : formatToggleNob.classList.add('toggleNobOn');
         formatToggleNob === null || formatToggleNob === void 0 ? void 0 : formatToggleNob.classList.remove('toggleNobOff');
+        checkIfWhiteTheme();
     }
     else if (timeFormat == '12h') {
         timeFormat = '24h';
         formatToggleNob === null || formatToggleNob === void 0 ? void 0 : formatToggleNob.classList.add('toggleNobOff');
         formatToggleNob === null || formatToggleNob === void 0 ? void 0 : formatToggleNob.classList.remove('toggleNobOn');
+        checkIfWhiteTheme();
     }
     else {
     }
@@ -241,6 +243,20 @@ function checkIfWhiteTheme() {
         applyBorderColorToArray(borderChangeElements, 'black');
         applyColorToArray(textThemeOptions, 'black');
         applyBoxShadowToArray(boxShadowChangeElements, 0, 0, 0, 0.1, 'black');
+        settingsBar.style.background = '#4b4b4b30';
+        applyBackgroundToArray(boxShadowChangeElements, 'black');
+        if (formatToggleNob.classList.contains('toggleNobOn') == true) {
+            formatToggleNob.style.background = 'black';
+        }
+        else {
+            formatToggleNob.style.background = 'transparent';
+        }
+        if (secondsToggleNob.classList.contains('toggleNobOn') == true) {
+            secondsToggleNob.style.background = 'black';
+        }
+        else {
+            secondsToggleNob.style.background = 'transparent';
+        }
     }
     else {
         applyColorToArray(textElements, 'white');
@@ -248,6 +264,20 @@ function checkIfWhiteTheme() {
         applyBorderColorToArray(borderChangeElements, 'white');
         applyColorToArray(textThemeOptions, 'white');
         applyBoxShadowToArray(boxShadowChangeElements, 0, 0, 0, 0.1, 'white');
+        settingsBar.style.background = '#b4b4b438';
+        applyBackgroundToArray(boxShadowChangeElements, 'white');
+        if (formatToggleNob.classList.contains('toggleNobOn') == true) {
+            formatToggleNob.style.background = 'white';
+        }
+        else {
+            formatToggleNob.style.background = 'transparent';
+        }
+        if (secondsToggleNob.classList.contains('toggleNobOn') == true) {
+            secondsToggleNob.style.background = 'white';
+        }
+        else {
+            secondsToggleNob.style.background = 'transparent';
+        }
     }
 }
 // -----------------------------------------------------------------------------
@@ -320,11 +350,13 @@ secondsToggle === null || secondsToggle === void 0 ? void 0 : secondsToggle.addE
         useSeconds = 'off';
         secondsToggleNob === null || secondsToggleNob === void 0 ? void 0 : secondsToggleNob.classList.remove('toggleNobOn');
         secondsToggleNob === null || secondsToggleNob === void 0 ? void 0 : secondsToggleNob.classList.add('toggleNobOff');
+        checkIfWhiteTheme();
     }
     else if (useSeconds == 'off') {
         useSeconds = 'on';
         secondsToggleNob === null || secondsToggleNob === void 0 ? void 0 : secondsToggleNob.classList.add('toggleNobOn');
         secondsToggleNob === null || secondsToggleNob === void 0 ? void 0 : secondsToggleNob.classList.remove('toggleNobOff');
+        checkIfWhiteTheme();
     }
 });
 // -----------------------------------------------------------------------------
