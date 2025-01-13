@@ -109,7 +109,7 @@ const boxShadowChangeElements: Array<HTMLElement | null> = [
   secondsToggleNob,
   formatToggleNob,
 ];
-const textThemeOptions = Array.from(textThemeContainer.children as HTMLCollectionOf<HTMLElement>);
+const textThemeOptions = Array.from(textThemeContainer!.children as HTMLCollectionOf<HTMLElement>);
 
 // -----------------------------------------------------------------------------
 
@@ -252,12 +252,10 @@ formatToggle?.addEventListener('click', () => {
     timeFormat = '12h';
     formatToggleNob?.classList.add('toggleNobOn');
     formatToggleNob?.classList.remove('toggleNobOff');
-    checkIfWhiteTheme();
   } else if (timeFormat == '12h') {
     timeFormat = '24h';
     formatToggleNob?.classList.add('toggleNobOff');
     formatToggleNob?.classList.remove('toggleNobOn');
-    checkIfWhiteTheme();
   } else {
   }
 });
@@ -273,35 +271,12 @@ function checkIfWhiteTheme() {
     applyBorderColorToArray(borderChangeElements, 'black');
     applyColorToArray(textThemeOptions, 'black');
     applyBoxShadowToArray(boxShadowChangeElements, 0, 0, 0, 0.1, 'black');
-    settingsBar.style.background = '#4b4b4b30';
-    if (formatToggleNob.classList.contains('toggleNobOn') == true) {
-      formatToggleNob.style.background = 'black';
-    } else {
-      formatToggleNob.style.background = 'transparent';
-    }
-    if (secondsToggleNob.classList.contains('toggleNobOn') == true) {
-      secondsToggleNob.style.background = 'black';
-    } else {
-      secondsToggleNob.style.background = 'transparent';
-    }
   } else {
     applyColorToArray(textElements, 'white');
     applyBackgroundToArray(colorChangeElements, 'white');
     applyBorderColorToArray(borderChangeElements, 'white');
     applyColorToArray(textThemeOptions, 'white');
     applyBoxShadowToArray(boxShadowChangeElements, 0, 0, 0, 0.1, 'white');
-    settingsBar.style.background = '#b4b4b438';
-    applyBackgroundToArray(boxShadowChangeElements, 'white');
-    if (formatToggleNob.classList.contains('toggleNobOn') == true) {
-      formatToggleNob.style.background = 'white';
-    } else {
-      formatToggleNob.style.background = 'transparent';
-    }
-    if (secondsToggleNob.classList.contains('toggleNobOn') == true) {
-      secondsToggleNob.style.background = 'white';
-    } else {
-      secondsToggleNob.style.background = 'transparent';
-    }
   }
 }
 
@@ -379,12 +354,10 @@ secondsToggle?.addEventListener('click', () => { // Runs when clicking the secon
     useSeconds = 'off';
     secondsToggleNob?.classList.remove('toggleNobOn');
     secondsToggleNob?.classList.add('toggleNobOff');
-    checkIfWhiteTheme();
   } else if (useSeconds == 'off') {
     useSeconds = 'on';
     secondsToggleNob?.classList.add('toggleNobOn');
     secondsToggleNob?.classList.remove('toggleNobOff');
-    checkIfWhiteTheme();
   }
 });
 
