@@ -586,12 +586,27 @@ body {
 
 .themeContainer > * {
   border-radius: 1.5rem;
-  z-index: 1004;
-  position: relative;
   overflow: hidden;
 
-  &:hover {
-    transform: scale(1.02);
+  &::after {
+    border-radius: 1.5rem;
+    z-index: 1004;
+    position: absolute;
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    background: white;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
 }
 
