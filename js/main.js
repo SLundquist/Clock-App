@@ -413,6 +413,3 @@ try { // Currently no tries in case of thrown error
 catch (e) {
     console.error(e); // Logs thrown error message, stopping further program execution
 }
-finally {
-    console.log('execution completed');
-}

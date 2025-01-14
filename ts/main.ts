@@ -191,7 +191,7 @@ function updateFullscreenIcon() { // Switches fullscreen icons
     fullscreenButton.classList.replace('fullscreenOn', 'fullscreenOff');
     }
   } else {
-    throw new Error('Uncaught error: Object is null')
+    throw new Error('Uncaught error: Object is null');
   }
 }
 
@@ -437,6 +437,4 @@ for (let i = 0; i < tooltipLaunchers.length; i++) {
 try { // Currently no tries in case of thrown error
 } catch (e) {
   console.error(e); // Logs thrown error message, stopping further program execution
-} finally {
-  console.log('execution completed');
 }
