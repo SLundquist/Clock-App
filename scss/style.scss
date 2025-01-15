@@ -331,6 +331,34 @@ body {
   );
 }
 
+.backgroundLightTheme8 {
+  background: linear-gradient(to top right, rgb(240, 228, 196), rgb(180, 99, 99));
+}
+
+.backgroundLightTheme9 {
+  background: linear-gradient(to top right, #e83434, transparent),
+      linear-gradient(to top left, #e2c441, transparent),
+      linear-gradient(to bottom right, #0d2ee8, transparent),
+      linear-gradient(to bottom left, #8a38f5, transparent);
+}
+
+.backgroundLightTheme10 {
+  background: radial-gradient(circle at 100% 0%, rgb(0, 255, 145), transparent, transparent),
+      radial-gradient(circle at 0% 100%, rgb(255, 242, 0), transparent, transparent),
+      radial-gradient(circle at 0% 0%, rgb(248, 4, 4), transparent),
+      radial-gradient(circle at 100% 100%, rgb(28, 61, 247), transparent);
+}
+
+.backgroundLightTheme11 {
+  background: linear-gradient(to top right, rgb(234, 240, 189), rgb(229, 75, 134));
+}
+
+.backgroundLightTheme12 {
+  background: linear-gradient(to bottom left, rgb(224, 116, 39), transparent, transparent),
+      linear-gradient(to top left, rgb(223, 45, 104), transparent),
+      linear-gradient(to right, rgb(25, 137, 235), transparent);
+}
+
 .backgroundDarkTheme1 {
   background: radial-gradient(circle at 50% 50%, #2b2b2b, #1b1b1b);
 }
@@ -360,6 +388,30 @@ body {
 
 .backgroundDarkTheme6 {
   background: linear-gradient(to top right, rgb(33, 48, 25), rgb(5, 15, 0));
+}
+
+.backgroundDarkTheme7 {
+  background: radial-gradient(circle at 0% 0%, rgb(41, 3, 42), rgb(15, 58, 87))
+}
+
+.backgroundDarkTheme8 {
+  background: linear-gradient(to top right, #130101, #460a1a);
+}
+
+.backgroundDarkTheme9 {
+  background: linear-gradient(to bottom right, #1f1602, #5b4006);
+}
+
+.backgroundDarkTheme10 {
+  background: linear-gradient(to top left, #040d00, #194b2d);
+}
+
+.backgroundDarkTheme11 {
+  background: linear-gradient(to bottom left, #120106, #46250e);
+}
+
+.backgroundDarkTheme12 {
+  background: linear-gradient(to right, #494838, #292828);
 }
 
 .textTheme1 {
@@ -571,7 +623,7 @@ body {
 #customThemeSettings {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 0.5fr 10fr;
   gap: 2rem;
 }
 

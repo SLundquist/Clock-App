@@ -41,11 +41,15 @@ var tooltipLaunchers = document.getElementsByClassName('tooltipLauncher');
 var textElements = [timeText, formatText, secondsText, themeSelectorText, textThemeSelectorText].filter(Boolean);
 var lightThemes = [
     'backgroundLightTheme1', 'backgroundLightTheme2', 'backgroundLightTheme3',
-    'backgroundLightTheme4', 'backgroundLightTheme5', 'backgroundLightTheme6', 'backgroundLightTheme7',
+    'backgroundLightTheme4', 'backgroundLightTheme5', 'backgroundLightTheme6',
+    'backgroundLightTheme7', 'backgroundLightTheme8', 'backgroundLightTheme9',
+    'backgroundLightTheme10', 'backgroundLightTheme11', 'backgroundLightTheme12',
 ];
 var darkThemes = [
     'backgroundDarkTheme1', 'backgroundDarkTheme2', 'backgroundDarkTheme3',
     'backgroundDarkTheme4', 'backgroundDarkTheme5', 'backgroundDarkTheme6',
+    'backgroundDarkTheme7', 'backgroundDarkTheme8', 'backgroundDarkTheme9',
+    'backgroundDarkTheme10', 'backgroundDarkTheme11', 'backgroundDarkTheme12',
 ];
 var textThemes = [
     'textTheme1', 'textTheme2', 'textTheme3', 'textTheme4', 'textTheme5', 'textTheme6',
