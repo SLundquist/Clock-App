@@ -478,14 +478,16 @@ body {
   font-weight: 400;
 }
 
+.textTheme13 {
+  font-family: "Pilowlava Regular";
+}
+
 .settingsBar {
   z-index: 1002;
   position: absolute;
   right: 3rem;
-  width: max;
   background: $uiBackground;
   backdrop-filter: blur(1.5rem);
-  height: max;
   top: 3rem;
   bottom: 3rem;
   left: 3rem;
